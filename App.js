@@ -1,20 +1,28 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import {Button, StyleSheet, Text, TextInput, View} from 'react-native';
+import StartPage from "./component/startPage/start-page";
+import {useState} from "react";
+import WordReadPage from "./component/wordReadPage/word-read-page";
 
 export default function App() {
+  const {container, text, textInput} = styles
+  const [textForRead, onChangeText] = useState('Вы ничего не ввели');
+  const [start, changeStateStart] = useState(false);
+
+  function onStart() {
+    changeStateStart(!start)
+  }
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+    <View style={container}>
+      <StartPage/>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+    backgroundColor: `black`,
+    height: `100%`
+  }
 });
